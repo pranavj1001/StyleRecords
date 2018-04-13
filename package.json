@@ -4,7 +4,7 @@
   "description": "A electron notes app compatible with markdown format and has mongodb storage solutions",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
