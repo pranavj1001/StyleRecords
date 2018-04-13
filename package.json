@@ -1,0 +1,19 @@
+{
+  "name": "style-records",
+  "version": "1.0.0",
+  "description": "A electron notes app compatible with markdown format and has mongodb storage solutions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranavj1001/StyleRecords.git"
+  },
+  "author": "Pranav N Jain <pranavj1001@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pranavj1001/StyleRecords/issues"
+  },
+  "homepage": "https://github.com/pranavj1001/StyleRecords#readme"
+}
