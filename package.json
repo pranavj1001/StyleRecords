@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/pranavj1001/StyleRecords/issues"
   },
-  "homepage": "https://github.com/pranavj1001/StyleRecords#readme"
+  "homepage": "https://github.com/pranavj1001/StyleRecords#readme",
+  "dependencies": {
+    "electron": "1.8.4"
+  }
 }
