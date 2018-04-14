@@ -16,6 +16,22 @@ body {
   max-width: 680px;
   padding: 0 15px;
 }
+.container-fluid--custom-padding {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.main-text--heading {
+  font-family: 'Pacifico', sans-serif;
+  font-weight: 100;
+  font-size: 3rem;
+}
+.main-text--heading--margin-top-40px {
+  margin-top: 20px;
+}
+.main-text--paragraph {
+  font-family: 'Ubuntu', sans-serif;
+}
 
 /* IDs Styles */
 
