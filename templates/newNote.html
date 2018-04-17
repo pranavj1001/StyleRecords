@@ -26,10 +26,31 @@
     </main>
 
     <div class="container-fluid container-wrapper">
-      <p>Click Add Button to start writing a note.</p>
+      <form class="form">
+        <div class="form-label-group">
+          <input type="text" id="inputTitle" class="form-control" placeholder="Title" required autofocus>
+          <label for="inputTitle">Title</label>
+        </div>
+
+        <div class="form-label-group">
+          <input type="text" id="inputAuthor" class="form-control" placeholder="Author" required>
+          <label for="inputAuthor">Author</label>
+        </div>
+
+        <div class="form-label-group">
+          <input type="text" id="inputKeywords" class="form-control" placeholder="Keywords">
+          <label for="inputKeywords">Keywords</label>
+        </div>
+
+        <div class="form-label-group">
+          <textarea type="text" id="inputText" class="form-control" placeholder="Content" rows="10"></textarea>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+      </form>
     </div>
 
-    <button id="addANote" title="Add a Note"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    <button id="addANote" title="Save"><i class="fa fa-save" aria-hidden="true"></i></button>
 
     <footer class="footer">
       <div class="container-fluid container-wrapper">
