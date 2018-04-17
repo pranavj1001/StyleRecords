@@ -18,5 +18,8 @@
   "homepage": "https://github.com/pranavj1001/StyleRecords#readme",
   "dependencies": {
     "electron": "1.8.4"
+  },
+  "devDependencies": {
+    "eslint-config-rallycoding": "3.2.0"
   }
 }
