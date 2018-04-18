@@ -38,6 +38,9 @@
     p {
       font-size: 1rem;
     }
+    ul {
+      padding-left: 1.7rem;
+    }
   </style>
 
   <body>
@@ -91,11 +94,25 @@
 
       const marked = require('marked');
 
+      const setHeightEqualToTextArea = (text) => {
+        const textareaHeight = document.getElementById('inputText').clientHeight;
+        const previewHeight = document.getElementById('showPreview').clientHeight;
+        if (previewHeight > textareaHeight) {
+          document.getElementById('inputText').style.height = previewHeight + "px";
+        }
+
+        if (text === "") {
+          document.getElementById('inputText').style.height = "252px";
+          document.getElementById('inputText').style.height = "252px";
+        }
+      };
+
       const navigateToHome = () => {
         window.location.href = `file://${__dirname}/home.html`;
       };
 
       const showContentInMdFormat = (text) => {
+        setHeightEqualToTextArea(text);
         document.getElementById('showPreview').innerHTML = marked(text);
       };
 
