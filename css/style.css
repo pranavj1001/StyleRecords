@@ -117,6 +117,13 @@ body {
   max-width: 200px;
 }
 
+#showPreview {
+  height: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}
+
 /* Footer Styles */
 .footer {
   position: absolute;
