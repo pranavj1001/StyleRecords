@@ -113,6 +113,10 @@ body {
   outline: none;
 }
 
+#saveNote {
+  max-width: 200px;
+}
+
 /* Footer Styles */
 .footer {
   position: absolute;

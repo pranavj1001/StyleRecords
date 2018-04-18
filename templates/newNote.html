@@ -43,10 +43,17 @@
         </div>
 
         <div class="form-label-group">
-          <textarea type="text" id="inputText" class="form-control" placeholder="Content" rows="10"></textarea>
+          <div class="row">
+            <div class="col-lg-6">
+              <textarea type="text" id="inputText" class="form-control" placeholder="Content" rows="10"></textarea>
+            </div>
+            <div class="col-lg-6">
+              <textarea type="text" id="inputText" class="form-control" placeholder="Content Preview" rows="10" disabled></textarea>
+            </div>
+          </div>
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+        <button class="btn btn-lg btn-primary btn-block" id="saveNote" type="submit">Save</button>
       </form>
     </div>
 
