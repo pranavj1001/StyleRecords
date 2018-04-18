@@ -20,7 +20,7 @@
 
     <!-- Begin page content -->
     <main role="main" class="container-fluid container-wrapper">
-      <h1 class="main-text--heading main-text--heading--margin-top-40px">New <strong>Record</strong></h1>
+      <h1 class="main-text--heading main-text--heading--margin-top-40px"><button id="backToHome" onclick="navigateToHome()" title="Back to Home"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>New <strong>Record</strong></h1>
       <p class="lead main-text--paragraph">Jot down your notes, ideas, memories here.</p>
       <hr>
     </main>
@@ -55,6 +55,14 @@
         <span class="text-muted">&copy; Developed and Designed by Pranav Jain</span>
       </div>
     </footer>
+
+    <script type="text/javascript">
+
+      const navigateToHome = () => {
+        window.location.href = `file://${__dirname}/home.html`;
+      };
+
+    </script>
 
   </body>
 </html>

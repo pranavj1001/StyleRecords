@@ -29,7 +29,7 @@
       <p>Click Add Button to start writing a note.</p>
     </div>
 
-    <button id="addANote" title="Add a Note" onclick="openNewNoteWindow()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    <button id="addANote" title="Add a Note" onclick="navigateToNewNote()"><i class="fa fa-plus" aria-hidden="true"></i></button>
 
     <footer class="footer">
       <div class="container-fluid container-wrapper">
@@ -42,7 +42,7 @@
       const electron = require('electron');
       const { ipcRenderer } = electron;
 
-      const openNewNoteWindow = () => {
+      const navigateToNewNote = () => {
         window.location.href = `file://${__dirname}/newNote.html`;
       };
 

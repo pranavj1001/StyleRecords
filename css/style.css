@@ -103,9 +103,14 @@ body {
   padding: 10px;
   border-radius: 4px;
 }
-
 #addANote:hover {
   background: #343a40;
+}
+
+#backToHome{
+  border: none;
+  background: none;
+  outline: none;
 }
 
 /* Footer Styles */
