@@ -1,15 +1,26 @@
 const electron = require('electron');
 const mongoose = require('mongoose');
+const Record = require('./database/models/record');
 
-const { app, BrowserWindow } = electron;
+const { app, BrowserWindow, ipcMain } = electron;
 
 let mainWindow;
 
 mongoose.connect('mongodb://localhost/style_records');
+mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  console.log('Connection established');
+
+ipcMain.on('record: save', (event, recordData) => {
+  const newRecord = new Record({
+    title: recordData.title,
+    author: recordData.author,
+    keywords: recordData.keywords,
+    content: recordData.content });
+  newRecord.save()
+    .then((data) => {
+      console.log(`DATA: ${data}`);
+    });
 });
 
 app.on('ready', () => {
