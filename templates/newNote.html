@@ -80,7 +80,7 @@
           </div>
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" id="saveNote" type="submit">Save</button>
+        <button class="btn btn-lg btn-primary btn-block" onclick="saveNoteToDB(event)" id="saveNote" type="submit">Save</button>
       </form>
     </div>
 
@@ -93,6 +93,21 @@
     <script type="text/javascript">
 
       const marked = require('marked');
+      const electron = require('electron');
+      const mongoose = require('mongoose');
+
+      const { ipcRenderer } = electron;
+
+      const saveNoteToDB = (event) => {
+        event.preventDefault();
+        const title = document.getElementById('inputTitle').value;
+        const author = document.getElementById('inputAuthor').value;
+        const keywords = document.getElementById('inputKeywords').value;
+        const content = marked(document.getElementById('inputText').value);
+        const recordData = { title, author, keywords, content };
+        console.log(recordData);
+        ipcRenderer.send('record: save', recordData);
+      };
 
       const setHeightEqualToTextArea = (text) => {
         const textareaHeight = document.getElementById('inputText').clientHeight;
