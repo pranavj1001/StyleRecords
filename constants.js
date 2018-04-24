@@ -9,4 +9,5 @@ module.exports.REQUEST_TO_FETCH_ALL_RECORDS = 'record: fetch_all';
 
 // data sent by mainProcess to mainWindow
 module.exports.RECORD_SAVED_CONFIRMATION = 'record: saved_confirmation';
-module.exports.RECORDS_FETCH_CONFIRMATION = 'record: fetched_confirmation';
+module.exports.RECORD_FETCH_CONFIRMATION = 'record: fetched_confirmation';
+module.exports.RECORDS_FETCH_CONFIRMATION = 'records: fetched_confirmation';
