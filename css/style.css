@@ -85,8 +85,15 @@ body {
   color: #777;
 }
 
-.display-none{
+.display-none {
   display: none;
+}
+
+.list-keywords {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 0.1rem;
+  margin-right: 5px;
 }
 
 /* IDs Styles */
