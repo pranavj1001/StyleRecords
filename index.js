@@ -18,8 +18,8 @@ ipcMain.on('record: save', (event, recordData) => {
     keywords: recordData.keywords,
     content: recordData.content });
   newRecord.save()
-    .then((data) => {
-      console.log(`DATA: ${data}`);
+    .then(() => {
+      mainWindow.webContents.send('record: saved_confirmation', 'Your record has been saved!');
     });
 });
 

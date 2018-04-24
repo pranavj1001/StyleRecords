@@ -105,7 +105,6 @@
         const keywords = document.getElementById('inputKeywords').value;
         const content = marked(document.getElementById('inputText').value);
         const recordData = { title, author, keywords, content };
-        console.log(recordData);
         ipcRenderer.send('record: save', recordData);
       };
 
@@ -130,6 +129,10 @@
         setHeightEqualToTextArea(text);
         document.getElementById('showPreview').innerHTML = marked(text);
       };
+
+      ipcRenderer.on('record: saved_confirmation', (event, confirmation) => {
+        console.log(confirmation);
+      });
 
     </script>
 
