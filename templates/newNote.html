@@ -109,8 +109,9 @@
         const author = document.getElementById('inputAuthor').value;
         const keywords = document.getElementById('inputKeywords').value;
         const content = marked(document.getElementById('inputText').value);
+        const date = new Date();
         if (title !== '' && content !== '' ){
-          const recordData = { title, author, keywords, content };
+          const recordData = { title, author, keywords, content, date };
           ipcRenderer.send('record: save', recordData);
         } else if (title === '') {
           document.getElementById('inputTitle').focus();

@@ -16,7 +16,9 @@ ipcMain.on('record: save', (event, recordData) => {
     title: recordData.title,
     author: recordData.author,
     keywords: recordData.keywords,
-    content: recordData.content });
+    content: recordData.content,
+    date: recordData.date
+   });
   newRecord.save()
     .then(() => {
       mainWindow.webContents.send('record: saved_confirmation', 'Your record has been saved!');
