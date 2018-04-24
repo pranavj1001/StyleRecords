@@ -6,7 +6,8 @@ const RecordSchema = new Schema({
   title: String,
   author: String,
   keywords: String,
-  content: String
+  content: String,
+  date: Date
 });
 
 const Record = mongoose.model('record', RecordSchema);
