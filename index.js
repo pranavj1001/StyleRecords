@@ -28,4 +28,9 @@ ipcMain.on('record: save', (event, recordData) => {
 app.on('ready', () => {
   mainWindow = new BrowserWindow({ width: 1200, height: 800 });
   mainWindow.loadURL(`file://${__dirname}/templates/home.html`);
+
+  Record.find({})
+    .then((fetchedRecords) => {
+      mainWindow.webContents.send('record: fetch_all', fetchedRecords);
+    });
 });
