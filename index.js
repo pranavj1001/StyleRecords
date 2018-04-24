@@ -33,7 +33,7 @@ ipcMain.on(REQUEST_TO_SAVE_RECORD, (event, recordData) => {
 });
 
 ipcMain.on(REQUEST_TO_FETCH_ALL_RECORDS, () => {
-  let records = [];
+  const records = [];
   Record.find({})
     .then((fetchedRecords) => {
       for (let i = 0; i < fetchedRecords.length; i++) {
@@ -49,6 +49,13 @@ ipcMain.on(REQUEST_TO_FETCH_ALL_RECORDS, () => {
         console.log(record);
       }
       mainWindow.webContents.send(RECORDS_FETCH_CONFIRMATION, records);
+    });
+});
+
+ipcMain.on(REQUEST_TO_FETCH_A_RECORD, (event, id) => {
+  Record.findById(id)
+    .then((record) => {
+      console.log(record);
     });
 });
 

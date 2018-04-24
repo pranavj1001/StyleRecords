@@ -54,7 +54,7 @@
 
       const navigateToViewNote = (element) => {
         // window.location.href = `file://${__dirname}/viewNote.html`;
-        console.log(element);
+        ipcRenderer.send(REQUEST_TO_FETCH_A_RECORD, element.getAttribute('record-id'));
       };
 
       ipcRenderer.send(REQUEST_TO_FETCH_ALL_RECORDS);
@@ -63,7 +63,6 @@
         let listContents = '';
         TimeAgo.locale(en);
         const timeAgo = new TimeAgo('en-US');
-        console.log(records);
         for(let i = records.length-1; i >= 0; i--) {
           const keywords = records[i].keywords.split(" ");
           const currentRecordDate = timeAgo.format(Date.parse(records[i].date));
