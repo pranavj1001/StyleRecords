@@ -1,6 +1,7 @@
 const electron = require('electron');
 const mongoose = require('mongoose');
 const Record = require('./database/models/record');
+const { RECORD_SAVED } = require('./constants');
 
 const { app, BrowserWindow, ipcMain } = electron;
 
@@ -21,7 +22,7 @@ ipcMain.on('record: save', (event, recordData) => {
    });
   newRecord.save()
     .then(() => {
-      mainWindow.webContents.send('record: saved_confirmation', 'Your record has been saved!');
+      mainWindow.webContents.send('record: saved_confirmation', RECORD_SAVED);
     });
 });
 
