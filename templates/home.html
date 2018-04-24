@@ -57,17 +57,20 @@
         let listContents = '';
         TimeAgo.locale(en);
         const timeAgo = new TimeAgo('en-US');
-
         for(let i = records.length-1; i >= 0; i--) {
+          const keywords = records[i]._doc.keywords.split(" ");
           const currentRecordDate = timeAgo.format(Date.parse(records[i]._doc.date));
-          listContents += `
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">${records[i]._doc.title}</h5>
-              <small>Added ${currentRecordDate}</small>
-            </div>
-            <p class="mb-1">${records[i]._doc.keywords}</p>
-            <small>By ${records[i]._doc.author}</small>
+          listContents += ` <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">${records[i]._doc.title}</h5>
+          <small>Added ${currentRecordDate}</small>
+          </div>
+          <p class="mb-1">`;
+          for(let j = 0; j < keywords.length; j++) {
+            listContents += `<span class="list-keywords">${keywords[j]}</span>`;
+          }
+          listContents += `</p>
+          <small>By ${records[i]._doc.author}</small>
           </a>`;
         }
         document.getElementById('list').innerHTML = listContents;
