@@ -54,7 +54,6 @@
 
     <div id="saveAlert" class="container-fluid container-wrapper display-none">
       <div class="alert alert-success" id="saveAlertText" role="alert">
-        This is a success alert—check it out!
       </div>
     </div>
 
@@ -144,7 +143,7 @@
 
       ipcRenderer.on('record: saved_confirmation', (event, confirmation) => {
         document.getElementById('saveAlert').style.display = 'block';
-        document.getElementById('saveAlertText').html = confirmation;
+        document.getElementById('saveAlertText').innerHTML = confirmation;
         document.getElementById('saveRecordForm').reset();
       });
 
