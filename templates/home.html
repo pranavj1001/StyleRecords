@@ -25,7 +25,7 @@
       <hr>
     </main>
 
-    <div class="container-fluid container-wrapper">
+    <div class="container-fluid container-wrapper list-group" id="list">
       <p>Click Add Button to start writing a note.</p>
     </div>
 
@@ -41,10 +41,31 @@
 
       const electron = require('electron');
       const { ipcRenderer } = electron;
+      const {
+        REQUEST_TO_FETCH_ALL_RECORDS,
+        RECORDS_FETCH_CONFIRMATION } = require('../constants');
 
       const navigateToNewNote = () => {
         window.location.href = `file://${__dirname}/newNote.html`;
       };
+
+      ipcRenderer.send(REQUEST_TO_FETCH_ALL_RECORDS);
+
+      ipcRenderer.on(RECORDS_FETCH_CONFIRMATION, (event, records) => {
+        let listContents = '';
+        for(let i = records.length-1; i >= 0; i--) {
+          listContents += `
+          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">${records[i]._doc.title}</h5>
+              <small>Added few mins ago</small>
+            </div>
+            <p class="mb-1">${records[i]._doc.keywords}</p>
+            <small>By ${records[i]._doc.author}</small>
+          </a>`;
+        }
+        document.getElementById('list').innerHTML = listContents;
+      });
 
     </script>
 
