@@ -100,6 +100,9 @@
       const marked = require('marked');
       const electron = require('electron');
       const mongoose = require('mongoose');
+      const {
+        REQUEST_TO_SAVE_RECORD,
+        RECORD_SAVED_CONFIRMATION } = require('../constants');
 
       const { ipcRenderer } = electron;
 
@@ -112,7 +115,7 @@
         const date = new Date();
         if (title !== '' && content !== '' ){
           const recordData = { title, author, keywords, content, date };
-          ipcRenderer.send('record: save', recordData);
+          ipcRenderer.send(REQUEST_TO_SAVE_RECORD, recordData);
         } else if (title === '') {
           document.getElementById('inputTitle').focus();
         } else if (content === '') {
@@ -142,7 +145,7 @@
         document.getElementById('showPreview').innerHTML = marked(text);
       };
 
-      ipcRenderer.on('record: saved_confirmation', (event, confirmation) => {
+      ipcRenderer.on(RECORD_SAVED_CONFIRMATION, (event, confirmation) => {
         document.getElementById('saveAlert').style.display = 'block';
         document.getElementById('saveAlertText').innerHTML = confirmation;
         document.getElementById('saveRecordForm').reset();
