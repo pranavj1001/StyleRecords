@@ -85,6 +85,10 @@ body {
   color: #777;
 }
 
+.display-none{
+  display: none;
+}
+
 /* IDs Styles */
 #addANote {
   position: fixed;

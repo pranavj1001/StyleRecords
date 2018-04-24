@@ -52,15 +52,21 @@
       <hr>
     </main>
 
+    <div id="saveAlert" class="container-fluid container-wrapper display-none">
+      <div class="alert alert-success" id="saveAlertText" role="alert">
+        This is a success alert—check it out!
+      </div>
+    </div>
+
     <div class="container-fluid container-wrapper">
-      <form class="form">
+      <form class="form" id="saveRecordForm">
         <div class="form-label-group">
           <input type="text" id="inputTitle" class="form-control" placeholder="Title" required autofocus>
           <label for="inputTitle">Title</label>
         </div>
 
         <div class="form-label-group">
-          <input type="text" id="inputAuthor" class="form-control" placeholder="Author" required>
+          <input type="text" id="inputAuthor" class="form-control" placeholder="Author">
           <label for="inputAuthor">Author</label>
         </div>
 
@@ -104,8 +110,14 @@
         const author = document.getElementById('inputAuthor').value;
         const keywords = document.getElementById('inputKeywords').value;
         const content = marked(document.getElementById('inputText').value);
-        const recordData = { title, author, keywords, content };
-        ipcRenderer.send('record: save', recordData);
+        if (title !== '' && content !== '' ){
+          const recordData = { title, author, keywords, content };
+          ipcRenderer.send('record: save', recordData);
+        } else if (title === '') {
+          document.getElementById('inputTitle').focus();
+        } else if (content === '') {
+          document.getElementById('inputText').focus();
+        }
       };
 
       const setHeightEqualToTextArea = (text) => {
@@ -131,7 +143,9 @@
       };
 
       ipcRenderer.on('record: saved_confirmation', (event, confirmation) => {
-        console.log(confirmation);
+        document.getElementById('saveAlert').style.display = 'block';
+        document.getElementById('saveAlertText').html = confirmation;
+        document.getElementById('saveRecordForm').reset();
       });
 
     </script>
