@@ -4,6 +4,7 @@ const Record = require('./database/models/record');
 const {
   RECORD_SAVED_CONFIRMATION_MESSAGE,
   REQUEST_TO_SAVE_RECORD,
+  REQUEST_TO_FETCH_A_RECORD,
   RECORD_SAVED_CONFIRMATION,
   RECORDS_FETCH_CONFIRMATION,
   REQUEST_TO_FETCH_ALL_RECORDS } = require('./constants');
@@ -32,9 +33,22 @@ ipcMain.on(REQUEST_TO_SAVE_RECORD, (event, recordData) => {
 });
 
 ipcMain.on(REQUEST_TO_FETCH_ALL_RECORDS, () => {
+  let records = [];
   Record.find({})
     .then((fetchedRecords) => {
-      mainWindow.webContents.send(RECORDS_FETCH_CONFIRMATION, fetchedRecords);
+      for (let i = 0; i < fetchedRecords.length; i++) {
+        const record = {
+          title: fetchedRecords[i].title,
+          author: fetchedRecords[i].author,
+          keywords: fetchedRecords[i].keywords,
+          content: fetchedRecords[i].content,
+          date: fetchedRecords[i].date,
+          id: fetchedRecords[i]._id.toString()
+        };
+        records.push(record);
+        console.log(record);
+      }
+      mainWindow.webContents.send(RECORDS_FETCH_CONFIRMATION, records);
     });
 });
 

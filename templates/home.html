@@ -45,10 +45,16 @@
       const { ipcRenderer } = electron;
       const {
         REQUEST_TO_FETCH_ALL_RECORDS,
+        REQUEST_TO_FETCH_A_RECORD,
         RECORDS_FETCH_CONFIRMATION } = require('../constants');
 
       const navigateToNewNote = () => {
         window.location.href = `file://${__dirname}/newNote.html`;
+      };
+
+      const navigateToViewNote = (element) => {
+        // window.location.href = `file://${__dirname}/viewNote.html`;
+        console.log(element);
       };
 
       ipcRenderer.send(REQUEST_TO_FETCH_ALL_RECORDS);
@@ -57,12 +63,14 @@
         let listContents = '';
         TimeAgo.locale(en);
         const timeAgo = new TimeAgo('en-US');
+        console.log(records);
         for(let i = records.length-1; i >= 0; i--) {
-          const keywords = records[i]._doc.keywords.split(" ");
-          const currentRecordDate = timeAgo.format(Date.parse(records[i]._doc.date));
-          listContents += ` <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+          const keywords = records[i].keywords.split(" ");
+          const currentRecordDate = timeAgo.format(Date.parse(records[i].date));
+          listContents += `
+          <a href="#" onclick="navigateToViewNote(this)" record-id="${records[i].id.toString()}" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">${records[i]._doc.title}</h5>
+          <h5 class="mb-1">${records[i].title}</h5>
           <small>Added ${currentRecordDate}</small>
           </div>
           <p class="mb-1">`;
@@ -70,7 +78,7 @@
             listContents += `<span class="list-keywords">${keywords[j]}</span>`;
           }
           listContents += `</p>
-          <small>By ${records[i]._doc.author}</small>
+          <small>By ${records[i].author}</small>
           </a>`;
         }
         document.getElementById('list').innerHTML = listContents;
