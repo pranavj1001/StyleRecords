@@ -45,7 +45,7 @@
       const { ipcRenderer } = electron;
       const {
         REQUEST_TO_FETCH_ALL_RECORDS,
-        REQUEST_TO_FETCH_A_RECORD,
+        REQUEST_TO_SAVE_ID_TEMP,
         RECORDS_FETCH_CONFIRMATION } = require('../constants');
 
       const navigateToNewNote = () => {
@@ -53,8 +53,8 @@
       };
 
       const navigateToViewNote = (element) => {
-        // window.location.href = `file://${__dirname}/viewNote.html`;
-        ipcRenderer.send(REQUEST_TO_FETCH_A_RECORD, element.getAttribute('record-id'));
+        ipcRenderer.send(REQUEST_TO_SAVE_ID_TEMP, element.getAttribute('record-id'));
+        window.location.href = `file://${__dirname}/viewNote.html`;
       };
 
       ipcRenderer.send(REQUEST_TO_FETCH_ALL_RECORDS);

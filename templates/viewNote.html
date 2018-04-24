@@ -51,7 +51,7 @@
       <hr>
     </main>
 
-    
+
 
     <footer class="footer">
       <div class="container-fluid container-wrapper">
@@ -65,12 +65,16 @@
       const electron = require('electron');
       const mongoose = require('mongoose');
       const {
-        REQUEST_TO_SAVE_RECORD,
-        RECORD_SAVED_CONFIRMATION } = require('../constants');
+        REQUEST_TO_FETCH_A_RECORD,
+        RECORD_FETCH_CONFIRMATION } = require('../constants');
 
       const { ipcRenderer } = electron;
 
+      ipcRenderer.send(REQUEST_TO_FETCH_A_RECORD);
 
+      ipcRenderer.on(RECORD_FETCH_CONFIRMATION, (event, record) => {
+        console.log(record);
+      });
 
     </script>
 

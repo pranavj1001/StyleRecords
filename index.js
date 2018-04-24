@@ -4,14 +4,17 @@ const Record = require('./database/models/record');
 const {
   RECORD_SAVED_CONFIRMATION_MESSAGE,
   REQUEST_TO_SAVE_RECORD,
+  REQUEST_TO_SAVE_ID_TEMP,
   REQUEST_TO_FETCH_A_RECORD,
   RECORD_SAVED_CONFIRMATION,
+  RECORD_FETCH_CONFIRMATION,
   RECORDS_FETCH_CONFIRMATION,
   REQUEST_TO_FETCH_ALL_RECORDS } = require('./constants');
 
 const { app, BrowserWindow, ipcMain } = electron;
 
 let mainWindow;
+let currentOpenRecord;
 
 mongoose.connect('mongodb://localhost/style_records');
 mongoose.Promise = global.Promise;
@@ -46,16 +49,19 @@ ipcMain.on(REQUEST_TO_FETCH_ALL_RECORDS, () => {
           id: fetchedRecords[i]._id.toString()
         };
         records.push(record);
-        console.log(record);
       }
       mainWindow.webContents.send(RECORDS_FETCH_CONFIRMATION, records);
     });
 });
 
-ipcMain.on(REQUEST_TO_FETCH_A_RECORD, (event, id) => {
-  Record.findById(id)
+ipcMain.on(REQUEST_TO_SAVE_ID_TEMP, (event, id) => {
+  currentOpenRecord = id;
+});
+
+ipcMain.on(REQUEST_TO_FETCH_A_RECORD, () => {
+  Record.findById(currentOpenRecord)
     .then((record) => {
-      console.log(record);
+      mainWindow.webContents.send(RECORD_FETCH_CONFIRMATION, record);
     });
 });
 
