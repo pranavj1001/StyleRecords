@@ -96,6 +96,10 @@ body {
   margin-right: 5px;
 }
 
+.underlined-text {
+  text-decoration: underline;
+}
+
 /* IDs Styles */
 #addANote {
   position: fixed;
@@ -137,6 +141,11 @@ body {
 
 #recordContent--title {
   font-size: 3.5rem;
+  margin-bottom: 5px;
+}
+#recordContent--author {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
 }
 #recordContent--content-heading {
   font-size: 1.8rem;
