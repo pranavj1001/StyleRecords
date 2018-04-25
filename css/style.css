@@ -128,7 +128,7 @@ body {
   outline: none;
 }
 
-#saveNote {
+#saveNote, #editNote {
   max-width: 200px;
 }
 
@@ -145,11 +145,11 @@ body {
 }
 #recordContent--author {
   font-size: 1.2rem;
-  margin-bottom: 5px;
 }
 #recordContent--content-heading {
   font-size: 1.8rem;
   font-weight: 300;
+  margin-bottom: 5px;
 }
 #recordContent--content {
   border: 1px solid #ccc;
@@ -157,6 +157,7 @@ body {
   padding: 0.1rem;
   min-height: 250px;
   padding: 1.5%;
+  margin-bottom: 25px;
 }
 
 
