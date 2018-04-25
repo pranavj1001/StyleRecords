@@ -135,6 +135,22 @@ body {
   padding: 0.5rem;
 }
 
+#recordContent--title {
+  font-size: 3.5rem;
+}
+#recordContent--content-heading {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+#recordContent--content {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.1rem;
+  min-height: 250px;
+  padding: 1.5%;
+}
+
+
 /* Media Queries */
 @media (max-width: 768px) {
   #showPreviewContainer {
