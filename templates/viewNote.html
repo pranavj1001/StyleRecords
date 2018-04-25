@@ -57,6 +57,10 @@
       <p id="recordContent--author"></p>
       <p id="recordContent--content-heading">Content:</p>
       <div id="recordContent--content"></div>
+
+      <form class="form">
+        <button class="btn btn-lg btn-primary btn-block" onclick="editNote(event)" id="editNote" type="submit">Edit</button>
+      </form>
     </div>
 
     <footer class="footer">
@@ -78,6 +82,10 @@
 
       const navigateToHome = () => {
         window.location.href = `file://${__dirname}/home.html`;
+      };
+
+      const editNote = (element) => {
+        console.log(element);
       };
 
       ipcRenderer.send(REQUEST_TO_FETCH_A_RECORD);
