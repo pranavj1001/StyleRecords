@@ -51,7 +51,9 @@
       <hr>
     </main>
 
-
+    <div id="recordContent">
+      
+    </div>
 
     <footer class="footer">
       <div class="container-fluid container-wrapper">
@@ -69,6 +71,10 @@
         RECORD_FETCH_CONFIRMATION } = require('../constants');
 
       const { ipcRenderer } = electron;
+
+      const navigateToHome = () => {
+        window.location.href = `file://${__dirname}/home.html`;
+      };
 
       ipcRenderer.send(REQUEST_TO_FETCH_A_RECORD);
 
