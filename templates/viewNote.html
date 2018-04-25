@@ -90,7 +90,7 @@
         }
         document.getElementById('recordContent--title').innerHTML = record._doc.title;
         document.getElementById('recordContent--keywords').innerHTML = keywordsList;
-        document.getElementById('recordContent--author').innerHTML = `By ${record._doc.author}`;
+        document.getElementById('recordContent--author').innerHTML = `By <span class="underlined-text">${record._doc.author}</span>`;
         document.getElementById('recordContent--content').innerHTML = record._doc.content;
       });
 
