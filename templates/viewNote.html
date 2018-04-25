@@ -51,10 +51,11 @@
       <hr>
     </main>
 
-    <div id="recordContent">
+    <div id="recordContent" class="container-fluid container-wrapper">
       <p id="recordContent--title"></p>
       <p id="recordContent--keywords"></p>
       <p id="recordContent--author"></p>
+      <p id="recordContent--content-heading">Content:</p>
       <div id="recordContent--content"></div>
     </div>
 
@@ -82,7 +83,15 @@
       ipcRenderer.send(REQUEST_TO_FETCH_A_RECORD);
 
       ipcRenderer.on(RECORD_FETCH_CONFIRMATION, (event, record) => {
-        console.log(record);
+        const keywords = record._doc.keywords.split(" ");
+        let keywordsList = '';
+        for(let j = 0; j < keywords.length; j++) {
+          keywordsList += `<span class="list-keywords">${keywords[j]}</span>`;
+        }
+        document.getElementById('recordContent--title').innerHTML = record._doc.title;
+        document.getElementById('recordContent--keywords').innerHTML = keywordsList;
+        document.getElementById('recordContent--author').innerHTML = `By ${record._doc.author}`;
+        document.getElementById('recordContent--content').innerHTML = record._doc.content;
       });
 
     </script>
