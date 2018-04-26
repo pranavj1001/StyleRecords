@@ -83,6 +83,7 @@ ipcMain.on(REQUEST_TO_CHECK_FOR_EDIT_REQUEST, () => {
           author: fetchedRecord.author,
           keywords: fetchedRecord.keywords,
           content: fetchedRecord.content,
+          ogContent: fetchedRecord.ogContent,
           date: fetchedRecord.date,
           id: fetchedRecord._id.toString()
         };
