@@ -31,6 +31,7 @@ ipcMain.on(REQUEST_TO_SAVE_RECORD, (event, recordData) => {
     author: recordData.author,
     keywords: recordData.keywords,
     content: recordData.content,
+    ogContent: recordData.ogContent,
     date: recordData.date
    });
   newRecord.save()

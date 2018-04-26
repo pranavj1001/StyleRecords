@@ -112,9 +112,10 @@
         const author = document.getElementById('inputAuthor').value;
         const keywords = document.getElementById('inputKeywords').value;
         const content = marked(document.getElementById('inputText').value);
+        const ogContent = document.getElementById('inputText').value;
         const date = new Date();
         if (title !== '' && content !== '' ){
-          const recordData = { title, author, keywords, content, date };
+          const recordData = { title, author, keywords, content, ogContent, date };
           ipcRenderer.send(REQUEST_TO_SAVE_RECORD, recordData);
         } else if (title === '') {
           document.getElementById('inputTitle').focus();
