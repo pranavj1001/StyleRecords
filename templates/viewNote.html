@@ -58,9 +58,8 @@
       <p id="recordContent--content-heading">Content:</p>
       <div id="recordContent--content"></div>
 
-      <form class="form">
-        <button class="btn btn-lg btn-primary btn-block" onclick="editNote(event)" id="editNote" type="submit">Edit</button>
-      </form>
+      <button class="btn btn-lg btn-primary btn-block" onclick="editNote()" id="editNote" type="submit">Edit</button>
+
     </div>
 
     <footer class="footer">
@@ -76,7 +75,8 @@
       const mongoose = require('mongoose');
       const {
         REQUEST_TO_FETCH_A_RECORD,
-        RECORD_FETCH_CONFIRMATION } = require('../constants');
+        RECORD_FETCH_CONFIRMATION,
+        REQUEST_TO_EDIT_A_RECORD } = require('../constants');
 
       const { ipcRenderer } = electron;
 
@@ -84,8 +84,9 @@
         window.location.href = `file://${__dirname}/home.html`;
       };
 
-      const editNote = (element) => {
-        console.log(element);
+      const editNote = (event) => {
+        ipcRenderer.send(REQUEST_TO_EDIT_A_RECORD);
+        window.location.href = `file://${__dirname}/newNote.html`
       };
 
       ipcRenderer.send(REQUEST_TO_FETCH_A_RECORD);

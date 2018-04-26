@@ -13,3 +13,4 @@ module.exports.REQUEST_TO_EDIT_A_RECORD = 'record: edit';
 module.exports.RECORD_SAVED_CONFIRMATION = 'record: saved_confirmation';
 module.exports.RECORD_FETCH_CONFIRMATION = 'record: fetched_confirmation';
 module.exports.RECORDS_FETCH_CONFIRMATION = 'records: fetched_confirmation';
+module.exports.RECORD_EDIT_CONFIRMATION = 'record: opened_to_edit_confirmation';
