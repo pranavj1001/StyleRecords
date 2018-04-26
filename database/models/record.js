@@ -8,6 +8,7 @@ const RecordSchema = new Schema({
   keywords: String,
   content: String,
   ogContent: String,
+  edited: Number, 
   date: Date
 });
 
