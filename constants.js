@@ -7,6 +7,7 @@ module.exports.REQUEST_TO_SAVE_RECORD = 'record: save';
 module.exports.REQUEST_TO_FETCH_A_RECORD = 'record: fetch_a_record';
 module.exports.REQUEST_TO_FETCH_ALL_RECORDS = 'record: fetch_all';
 module.exports.REQUEST_TO_SAVE_ID_TEMP = 'record: save_id';
+module.exports.REQUEST_TO_EDIT_A_RECORD = 'record: edit';
 
 // data sent by mainProcess to mainWindow
 module.exports.RECORD_SAVED_CONFIRMATION = 'record: saved_confirmation';
