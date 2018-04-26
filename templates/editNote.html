@@ -85,7 +85,7 @@
           </div>
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" onclick="saveNoteToDB(event)" id="saveNote" type="submit">Save</button>
+        <button class="btn btn-lg btn-primary btn-block" onclick="updateNoteToDB(event)" id="updateNote" type="submit">Save</button>
       </form>
     </div>
 
@@ -102,6 +102,7 @@
       const mongoose = require('mongoose');
       const {
         RECORD_EDIT_PENDING_REQUEST,
+        REQUEST_TO_UPDATE_RECORD,
         REQUEST_TO_CHECK_FOR_EDIT_REQUEST } = require('../constants');
 
       const { ipcRenderer } = electron;
@@ -126,6 +127,24 @@
       const showContentInMdFormat = (text) => {
         setHeightEqualToTextArea(text);
         document.getElementById('showPreview').innerHTML = marked(text);
+      };
+
+      const saveNoteToDB = (event) => {
+        event.preventDefault();
+        const title = document.getElementById('inputTitle').value;
+        const author = document.getElementById('inputAuthor').value;
+        const keywords = document.getElementById('inputKeywords').value;
+        const content = marked(document.getElementById('inputText').value);
+        const ogContent = document.getElementById('inputText').value;
+        const date = new Date();
+        if (title !== '' && content !== '' ){
+          const recordData = { title, author, keywords, content, ogContent, date };
+          ipcRenderer.send(REQUEST_TO_UPDATE_RECORD, recordData);
+        } else if (title === '') {
+          document.getElementById('inputTitle').focus();
+        } else if (content === '') {
+          document.getElementById('inputText').focus();
+        }
       };
 
       ipcRenderer.send(REQUEST_TO_CHECK_FOR_EDIT_REQUEST);
