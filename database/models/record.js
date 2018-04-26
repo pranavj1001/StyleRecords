@@ -7,6 +7,7 @@ const RecordSchema = new Schema({
   author: String,
   keywords: String,
   content: String,
+  ogContent: String,
   date: Date
 });
 
