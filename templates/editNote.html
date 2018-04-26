@@ -114,6 +114,9 @@
 
       ipcRenderer.on(RECORD_EDIT_PENDING_REQUEST, (event, record) => {
         document.getElementById('inputTitle').value = record.title;
+        document.getElementById('inputAuthor').value = record.author;
+        document.getElementById('inputKeywords').value = record.keywords;
+        document.getElementById('inputText').value = record.content;
       });
 
     </script>
