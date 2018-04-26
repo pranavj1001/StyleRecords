@@ -75,7 +75,6 @@ ipcMain.on(REQUEST_TO_EDIT_A_RECORD, () => {
 
 ipcMain.on(REQUEST_TO_CHECK_FOR_EDIT_REQUEST, () => {
   if (editRequest) {
-    editRequest = false;
     Record.findById(currentOpenRecord)
       .then((fetchedRecord) => {
         const record = {

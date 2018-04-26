@@ -86,7 +86,7 @@
 
       const editNote = (event) => {
         ipcRenderer.send(REQUEST_TO_EDIT_A_RECORD);
-        window.location.href = `file://${__dirname}/newNote.html`
+        window.location.href = `file://${__dirname}/editNote.html`
       };
 
       ipcRenderer.send(REQUEST_TO_FETCH_A_RECORD);

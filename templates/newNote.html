@@ -102,9 +102,7 @@
       const mongoose = require('mongoose');
       const {
         REQUEST_TO_SAVE_RECORD,
-        RECORD_SAVED_CONFIRMATION,
-        RECORD_EDIT_PENDING_REQUEST,
-        REQUEST_TO_CHECK_FOR_EDIT_REQUEST } = require('../constants');
+        RECORD_SAVED_CONFIRMATION } = require('../constants');
 
       const { ipcRenderer } = electron;
 
@@ -152,12 +150,6 @@
         document.getElementById('saveAlertText').innerHTML = confirmation;
         document.getElementById('saveRecordForm').reset();
         document.getElementById('showPreview').innerHTML = '';
-      });
-
-      ipcRenderer.send(REQUEST_TO_CHECK_FOR_EDIT_REQUEST);
-
-      ipcRenderer.on(RECORD_EDIT_PENDING_REQUEST, (event, record) => {
-        console.log(record);
       });
 
     </script>
