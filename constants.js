@@ -8,9 +8,10 @@ module.exports.REQUEST_TO_FETCH_A_RECORD = 'record: fetch_a_record';
 module.exports.REQUEST_TO_FETCH_ALL_RECORDS = 'record: fetch_all';
 module.exports.REQUEST_TO_SAVE_ID_TEMP = 'record: save_id';
 module.exports.REQUEST_TO_EDIT_A_RECORD = 'record: edit';
+module.exports.REQUEST_TO_CHECK_FOR_EDIT_REQUEST = 'record: check_edit_request';
 
 // data sent by mainProcess to mainWindow
 module.exports.RECORD_SAVED_CONFIRMATION = 'record: saved_confirmation';
 module.exports.RECORD_FETCH_CONFIRMATION = 'record: fetched_confirmation';
 module.exports.RECORDS_FETCH_CONFIRMATION = 'records: fetched_confirmation';
-module.exports.RECORD_EDITPAGE_OPEN_CONFIRMATION = 'record: opened_to_edit_confirmation';
+module.exports.RECORD_EDIT_PENDING_REQUEST = 'record: pending_edit_request';
