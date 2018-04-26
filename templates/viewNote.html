@@ -57,6 +57,7 @@
       <p id="recordContent--author"></p>
       <p id="recordContent--content-heading">Content:</p>
       <div id="recordContent--content"></div>
+      <p id="recordContent--date"></p>
 
       <button class="btn btn-lg btn-primary btn-block" onclick="editNote()" id="editNote" type="submit">Edit</button>
 
@@ -73,6 +74,8 @@
       const marked = require('marked');
       const electron = require('electron');
       const mongoose = require('mongoose');
+      const TimeAgo = require('javascript-time-ago');
+      const en = require('javascript-time-ago/locale/en');
       const {
         REQUEST_TO_FETCH_A_RECORD,
         RECORD_FETCH_CONFIRMATION,
@@ -94,6 +97,9 @@
       ipcRenderer.on(RECORD_FETCH_CONFIRMATION, (event, record) => {
         const keywords = record._doc.keywords.split(" ");
         let keywordsList = '';
+        TimeAgo.locale(en);
+        const timeAgo = new TimeAgo('en-US');
+        const currentRecordDate = timeAgo.format(Date.parse(record._doc.date));
         for(let j = 0; j < keywords.length; j++) {
           keywordsList += `<span class="list-keywords">${keywords[j]}</span>`;
         }
@@ -101,6 +107,11 @@
         document.getElementById('recordContent--keywords').innerHTML = keywordsList;
         document.getElementById('recordContent--author').innerHTML = `By <span class="underlined-text">${record._doc.author}</span>`;
         document.getElementById('recordContent--content').innerHTML = record._doc.content;
+        let addedOrUpdated = 'Added';
+        if (record._doc.edited === 1 ) {
+          addedOrUpdated = 'Updated';
+        }
+        document.getElementById('recordContent--date').innerHTML = `${addedOrUpdated} ${currentRecordDate}`;
       });
 
     </script>
