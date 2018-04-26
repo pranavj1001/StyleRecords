@@ -14,5 +14,6 @@ module.exports.REQUEST_TO_CHECK_FOR_EDIT_REQUEST = 'record: check_edit_request';
 // data sent by mainProcess to mainWindow
 module.exports.RECORD_SAVED_CONFIRMATION = 'record: saved_confirmation';
 module.exports.RECORD_FETCH_CONFIRMATION = 'record: fetched_confirmation';
+module.exports.RECORD_UPDATE_CONFIRMATION = 'record: update_confirmation';
 module.exports.RECORDS_FETCH_CONFIRMATION = 'records: fetched_confirmation';
 module.exports.RECORD_EDIT_PENDING_REQUEST = 'record: pending_edit_request';

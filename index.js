@@ -9,6 +9,7 @@ const {
   REQUEST_TO_EDIT_A_RECORD,
   REQUEST_TO_FETCH_ALL_RECORDS,
   REQUEST_TO_CHECK_FOR_EDIT_REQUEST,
+  REQUEST_TO_UPDATE_RECORD,
   RECORD_SAVED_CONFIRMATION,
   RECORD_FETCH_CONFIRMATION,
   RECORDS_FETCH_CONFIRMATION,
@@ -90,6 +91,22 @@ ipcMain.on(REQUEST_TO_CHECK_FOR_EDIT_REQUEST, () => {
         mainWindow.webContents.send(RECORD_EDIT_PENDING_REQUEST, record);
       });
   }
+});
+
+ipcMain.on(REQUEST_TO_UPDATE_RECORD, (event, recordData) => {
+  const updatedRecord = {
+    title: recordData.title,
+    author: recordData.author,
+    keywords: recordData.keywords,
+    content: recordData.content,
+    ogContent: recordData.ogContent,
+    date: recordData.date
+   };
+   console.log(updatedRecord);
+  Record.findByIdAndUpdate(currentOpenRecord, updatedRecord)
+    .then((record) => {
+      console.log(record);
+    });
 });
 
 app.on('ready', () => {
