@@ -35,6 +35,7 @@ ipcMain.on(REQUEST_TO_SAVE_RECORD, (event, recordData) => {
     keywords: recordData.keywords,
     content: recordData.content,
     ogContent: recordData.ogContent,
+    edited: recordData.edited,
     date: recordData.date
    });
   newRecord.save()
@@ -54,6 +55,7 @@ ipcMain.on(REQUEST_TO_FETCH_ALL_RECORDS, () => {
           keywords: fetchedRecords[i].keywords,
           content: fetchedRecords[i].content,
           date: fetchedRecords[i].date,
+          edited: fetchedRecords[i].edited,
           id: fetchedRecords[i]._id.toString()
         };
         records.push(record);
@@ -102,6 +104,7 @@ ipcMain.on(REQUEST_TO_UPDATE_RECORD, (event, recordData) => {
     keywords: recordData.keywords,
     content: recordData.content,
     ogContent: recordData.ogContent,
+    edited: recordData.edited,
     date: recordData.date
    };
   Record.findByIdAndUpdate(currentOpenRecord, updatedRecord)

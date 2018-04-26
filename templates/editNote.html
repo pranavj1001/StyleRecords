@@ -137,9 +137,10 @@
         const keywords = document.getElementById('inputKeywords').value;
         const content = marked(document.getElementById('inputText').value);
         const ogContent = document.getElementById('inputText').value;
+        const edited = 1;
         const date = new Date();
         if (title !== '' && content !== '' ){
-          const recordData = { title, author, keywords, content, ogContent, date };
+          const recordData = { title, author, keywords, content, ogContent, edited, date };
           ipcRenderer.send(REQUEST_TO_UPDATE_RECORD, recordData);
         } else if (title === '') {
           document.getElementById('inputTitle').focus();
