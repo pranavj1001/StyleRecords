@@ -47,7 +47,7 @@
 
     <!-- Begin page content -->
     <main role="main" class="container-fluid container-wrapper">
-      <h1 class="main-text--heading main-text--heading--margin-top-40px"><button id="backToHome" onclick="navigateToHome()" title="Back to Home"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>New <strong>Record</strong></h1>
+      <h1 class="main-text--heading main-text--heading--margin-top-40px" id="mainHeading"><button id="backToHome" onclick="navigateToHome()" title="Back to Home"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>New <strong>Record</strong></h1>
       <p class="lead main-text--paragraph">Jot down your notes, ideas, memories here.</p>
       <hr>
     </main>
@@ -102,7 +102,9 @@
       const mongoose = require('mongoose');
       const {
         REQUEST_TO_SAVE_RECORD,
-        RECORD_SAVED_CONFIRMATION } = require('../constants');
+        RECORD_SAVED_CONFIRMATION,
+        RECORD_EDIT_PENDING_REQUEST,
+        REQUEST_TO_CHECK_FOR_EDIT_REQUEST } = require('../constants');
 
       const { ipcRenderer } = electron;
 
@@ -150,6 +152,12 @@
         document.getElementById('saveAlertText').innerHTML = confirmation;
         document.getElementById('saveRecordForm').reset();
         document.getElementById('showPreview').innerHTML = '';
+      });
+
+      ipcRenderer.send(REQUEST_TO_CHECK_FOR_EDIT_REQUEST);
+
+      ipcRenderer.on(RECORD_EDIT_PENDING_REQUEST, (event, record) => {
+        console.log(record);
       });
 
     </script>
