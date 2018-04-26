@@ -103,7 +103,8 @@
       const {
         RECORD_EDIT_PENDING_REQUEST,
         REQUEST_TO_UPDATE_RECORD,
-        REQUEST_TO_CHECK_FOR_EDIT_REQUEST } = require('../constants');
+        REQUEST_TO_CHECK_FOR_EDIT_REQUEST,
+        RECORD_UPDATE_CONFIRMATION } = require('../constants');
 
       const { ipcRenderer } = electron;
 
@@ -155,6 +156,11 @@
         document.getElementById('inputKeywords').value = record.keywords;
         document.getElementById('inputText').value = record.ogContent;
         showContentInMdFormat(record.ogContent);
+      });
+
+      ipcRenderer.on(RECORD_UPDATE_CONFIRMATION, (event, confirmation) => {
+        document.getElementById('saveAlert').style.display = 'block';
+        document.getElementById('saveAlertText').innerHTML = confirmation;
       });
 
     </script>

@@ -13,7 +13,9 @@ const {
   RECORD_SAVED_CONFIRMATION,
   RECORD_FETCH_CONFIRMATION,
   RECORDS_FETCH_CONFIRMATION,
-  RECORD_EDIT_PENDING_REQUEST } = require('./constants');
+  RECORD_EDIT_PENDING_REQUEST,
+  RECORD_UPDATE_CONFIRMATION,
+  RECORD_EDITED_CONFIRMATION_MESSAGE } = require('./constants');
 
 const { app, BrowserWindow, ipcMain } = electron;
 
@@ -102,10 +104,9 @@ ipcMain.on(REQUEST_TO_UPDATE_RECORD, (event, recordData) => {
     ogContent: recordData.ogContent,
     date: recordData.date
    };
-   console.log(updatedRecord);
   Record.findByIdAndUpdate(currentOpenRecord, updatedRecord)
-    .then((record) => {
-      console.log(record);
+    .then(() => {
+      mainWindow.webContents.send(RECORD_UPDATE_CONFIRMATION, RECORD_EDITED_CONFIRMATION_MESSAGE);
     });
 });
 
