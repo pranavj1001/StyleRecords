@@ -69,14 +69,17 @@
         if(searchRecords.length !== 0) {
           for(let i = 0; i < searchRecords.length; i++) {
             if(value.charAt(0) === '#') {
-              console.log('TAGS');
+
             } else if (value.charAt(0) === '@') {
               console.log('Author');
             } else {
-              const currentTitle = searchRecords[i].title.toLowerCase();
-              if(value.toLowerCase() === currentTitle.substr(0, value.length)) {
-                results.push(searchRecords[i]);
-              }
+              const currentTitle = searchRecords[i].title.toLowerCase().split(" ");
+              for(let j = 0; j < currentTitle.length; j++) {
+                if(value.toLowerCase() === currentTitle[j].substr(0, value.length)) {
+                  results.push(searchRecords[i]);
+                  break;
+                }
+              };
             }
           }
           if (results.length !== 0) {
