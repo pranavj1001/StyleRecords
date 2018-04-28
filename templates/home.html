@@ -26,7 +26,7 @@
     </main>
 
     <div class="container-fluid container-wrapper">
-      <input type="text" placeholder="&#xF002; Search" onkeyup="getSearchInputText(value)" style="font-family:Arial, FontAwesome" id="searchBar" class="form-control">
+      <input type="text" placeholder="&#xF002; Search" onkeyup="getSearchInputText(event, value)" style="font-family:Arial, FontAwesome" id="searchBar" class="form-control">
     </div>
 
     <div class="container-fluid container-wrapper list-group" id="list">
@@ -65,22 +65,21 @@
         window.location.href = `file://${__dirname}/viewNote.html`;
       };
 
-      const getSearchInputText = (value) => {
+      const getSearchInputText = (e, value) => {
+        let results = [];
         if(searchRecords.length !== 0) {
+          for(let i = 0; i < searchRecords.length; i++) {
 
+          }
         } else {
           document.getElementById('list').innerHTML = NO_SEARCH_RESULTS_FOUND;
         }
       };
 
-      ipcRenderer.send(REQUEST_TO_FETCH_ALL_RECORDS);
-
-      ipcRenderer.on(RECORDS_FETCH_CONFIRMATION, (event, records) => {
+      const showList = (records, runOnce) => {
         let listContents = '';
         TimeAgo.locale(en);
         const timeAgo = new TimeAgo('en-US');
-        let searchRecordId = 1;
-        const incrementer = 2;
         for(let i = records.length-1; i >= 0; i--) {
           const keywords = records[i].keywords.split(" ");
           const currentRecordDate = timeAgo.format(Date.parse(records[i].date));
@@ -101,16 +100,19 @@
           listContents += `</p>
           <small>By ${records[i].author}</small>
           </a>`;
-          let searchRecord = {};
-          searchRecord.id = searchRecordId;
-          searchRecord.title = records[i].title;
-          searchRecord.tags = keywords;
-          searchRecordId = searchRecordId + incrementer;
-          searchRecords.push(searchRecord);
         }
         document.getElementById('list').innerHTML = listContents;
-        if(searchRecords.length > 0) {
+        if(runOnce === 1) {
           resetText = listContents;
+        }
+      };
+
+      ipcRenderer.send(REQUEST_TO_FETCH_ALL_RECORDS);
+
+      ipcRenderer.on(RECORDS_FETCH_CONFIRMATION, (event, records) => {
+        searchRecords = records;
+        if(searchRecords.length > 0) {
+          showList(records, 1);
         }
         console.log(searchRecords);
         console.log(document.getElementById('list').childNodes);
