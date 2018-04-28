@@ -11,6 +11,7 @@ module.exports.REQUEST_TO_SAVE_ID_TEMP = 'record: save_id';
 module.exports.REQUEST_TO_EDIT_A_RECORD = 'record: edit';
 module.exports.REQUEST_TO_UPDATE_RECORD = 'record: update';
 module.exports.REQUEST_TO_CHECK_FOR_EDIT_REQUEST = 'record: check_edit_request';
+module.exports.REQUEST_TO_DELETE_A_RECORD = 'record: delete';
 
 // data sent by mainProcess to mainWindow
 module.exports.RECORD_SAVED_CONFIRMATION = 'record: saved_confirmation';
