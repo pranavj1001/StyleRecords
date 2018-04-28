@@ -54,6 +54,7 @@
         NO_SEARCH_RESULTS_FOUND } = require('../constants');
 
       let searchRecords = [];
+      let resetText = '<p>Click Add Button to start writing a note.</p>';
 
       const navigateToNewNote = () => {
         window.location.href = `file://${__dirname}/newNote.html`;
@@ -66,7 +67,7 @@
 
       const getSearchInputText = (value) => {
         if(searchRecords.length !== 0) {
-          
+
         } else {
           document.getElementById('list').innerHTML = NO_SEARCH_RESULTS_FOUND;
         }
@@ -108,6 +109,9 @@
           searchRecords.push(searchRecord);
         }
         document.getElementById('list').innerHTML = listContents;
+        if(searchRecords.length > 0) {
+          resetText = listContents;
+        }
         console.log(searchRecords);
         console.log(document.getElementById('list').childNodes);
       });
