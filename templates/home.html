@@ -77,7 +77,10 @@
                 }
               }
             } else if (value.charAt(0) === '@') {
-              console.log('Author');
+              const author = searchRecords[i].author.toLowerCase();
+              if(value.toLowerCase().substr(1, value.length) === author.substr(0, value.length-1)) {
+                results.push(searchRecords[i]);
+              }
             } else {
               const currentTitle = searchRecords[i].title.toLowerCase().split(" ");
               for(let j = 0; j < currentTitle.length; j++) {
