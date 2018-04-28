@@ -12,6 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Ubuntu" rel="stylesheet">
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
     <link href="../css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
   </head>
@@ -60,8 +61,18 @@
       <p id="recordContent--date"></p>
 
       <button class="btn btn-lg btn-primary btn-block" onclick="editNote()" id="editNote" type="submit">Edit</button>
-      <button class="btn btn-lg btn-primary btn-block" onclick="deleteNote()" id="deleteNote" type="submit">Delete</button>
+      <button class="btn btn-lg btn-primary btn-block" onclick="openDeleteModal()" id="deleteNote">Delete</button>
+    </div>
 
+    <div id="deleteModal" class="custom-modal">
+      <div class="custom-modal--content">
+        <p>Are you sure?</p>
+        <hr>
+        <div class="custom-modal--body">
+          <p class="alert alert-danger" id="deleteModalAlert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This is a potentially destructive action <i class="fa fa-exclamation-triangle" aria-hidden="true"></i><br><br> Please be sure before going ahead.</p>
+        </div>
+        <hr>
+      </div>
     </div>
 
     <footer class="footer">
@@ -70,6 +81,7 @@
       </div>
     </footer>
 
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
     <script type="text/javascript">
 
       const marked = require('marked');
@@ -88,9 +100,13 @@
         window.location.href = `file://${__dirname}/home.html`;
       };
 
-      const editNote = (event) => {
+      const editNote = () => {
         ipcRenderer.send(REQUEST_TO_EDIT_A_RECORD);
         window.location.href = `file://${__dirname}/editNote.html`
+      };
+
+      const openDeleteModal = () => {
+        document.getElementById('deleteModal').className += ' showModal';
       };
 
       ipcRenderer.send(REQUEST_TO_FETCH_A_RECORD);
