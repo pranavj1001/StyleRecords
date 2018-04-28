@@ -30,3 +30,20 @@ This repository can also be used as a reference for using electron with mongodb.
 	* Searches for notes title by default
 	* Use ```#``` for searching tags/keywords
 	* Use ```@``` for searching author names
+* Responsive UI
+
+## To get started
+
+1. Download or clone this repo
+2. Make sure you have node.js
+3. cd to your project folder
+4. Run this command to install all the dependencies ```npm install```
+5. Run this command to startup the app ```npm start```
+
+## Queries
+
+email me at pranavj1001@gmail.com
+
+## License
+
+MIT License
