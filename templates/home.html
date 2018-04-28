@@ -69,8 +69,12 @@
         let results = [];
         if(searchRecords.length !== 0) {
           for(let i = 0; i < searchRecords.length; i++) {
-
+            const currentTitle = searchRecords[i].title.toLowerCase();
+            if(value.toLowerCase() === currentTitle.substr(0, value.length)) {
+              results.push(searchRecords[i]);
+            }
           }
+          showList(results);
         } else {
           document.getElementById('list').innerHTML = NO_SEARCH_RESULTS_FOUND;
         }
