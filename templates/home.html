@@ -12,6 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
     <link href="../css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
   </head>
@@ -20,27 +21,22 @@
 
     <!-- Begin page content -->
     <main role="main" class="container-fluid container-wrapper">
-      <h1 class="main-text--heading main-text--heading--margin-top-40px">Your <strong>Records</strong></h1>
-      <p class="lead main-text--paragraph">Jot down your notes, ideas, memories here.</p>
-      <hr>
+      <h1 class="main-text--heading main-text--heading--margin-top-40px animated fadeIn">Your <strong>Records</strong></h1>
+      <p class="lead main-text--paragraph animated fadeIn">Jot down your notes, ideas, memories here.</p>
+      <hr class="animated flash">
     </main>
 
     <div class="container-fluid container-wrapper">
       <input type="text" placeholder="&#xF002; Search" onkeyup="getSearchInputText(event, value)" style="font-family:Arial, FontAwesome" id="searchBar" class="form-control">
     </div>
 
-    <div id="deleteAlert" class="container-fluid container-wrapper display-none">
-      <div class="alert alert-success" id="deleteAlertText" role="alert">
-      </div>
-    </div>
-
     <div class="container-fluid container-wrapper list-group" id="list">
       <p>Click Add Button to start writing a note.</p>
     </div>
 
-    <button id="addANote" title="Add a Note" onclick="navigateToNewNote()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    <button id="addANote" class="animated infinite pulse" title="Add a Note" onclick="navigateToNewNote()"><i class="fa fa-plus" aria-hidden="true"></i></button>
 
-    <footer class="footer">
+    <footer class="footer animated fadeIn">
       <div class="container-fluid container-wrapper">
         <span class="text-muted">&copy; Developed and Designed by Pranav Jain</span>
       </div>
@@ -119,7 +115,7 @@
             addedOrUpdated = 'Updated';
           }
           listContents += `
-          <a href="#" onclick="navigateToViewNote(this)" record-id="${records[i].id.toString()}" class="list-group-item list-group-item-action flex-column align-items-start">
+          <a href="#" onclick="navigateToViewNote(this)" record-id="${records[i].id.toString()}" class="list-group-item list-group-item-action flex-column align-items-start animated fadeIn">
           <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">${records[i].title}</h5>
           <small>${addedOrUpdated} ${currentRecordDate}</small>

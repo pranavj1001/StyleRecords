@@ -12,7 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Ubuntu" rel="stylesheet">
-    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
     <link href="../css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
   </head>
@@ -48,11 +48,11 @@
 
     <!-- Begin page content -->
     <main role="main" class="container-fluid container-wrapper">
-      <h1 class="main-text--heading main-text--heading--margin-top-40px" data-aos="fade-down"><button id="backToHome" onclick="navigateToHome()" title="Back to Home"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>Your <strong>Record</strong></h1>
-      <hr>
+      <h1 class="main-text--heading main-text--heading--margin-top-40px animated fadeIn"><button id="backToHome" onclick="navigateToHome()" title="Back to Home"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>Your <strong>Record</strong></h1>
+      <hr class="animated flash">
     </main>
 
-    <div id="recordContent" class="container-fluid container-wrapper">
+    <div id="recordContent" class="container-fluid container-wrapper animated fadeIn">
       <p id="recordContent--title"></p>
       <p id="recordContent--keywords"></p>
       <p id="recordContent--author"></p>
@@ -60,8 +60,8 @@
       <div id="recordContent--content"></div>
       <p id="recordContent--date"></p>
 
-      <button class="btn btn-lg btn-primary btn-block" onclick="editNote()" id="editNote" type="submit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
-      <button class="btn btn-lg btn-danger btn-block" onclick="openDeleteModal()" id="deleteNote"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+      <button class="btn btn-lg btn-primary btn-block animated pulse" onclick="editNote()" id="editNote" type="submit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+      <button class="btn btn-lg btn-danger btn-block animated pulse" onclick="openDeleteModal()" id="deleteNote"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
     </div>
 
     <div id="deleteModal" class="custom-modal">
@@ -79,13 +79,12 @@
       </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer animated fadeIn">
       <div class="container-fluid container-wrapper">
         <span class="text-muted">&copy; Developed and Designed by Pranav Jain</span>
       </div>
     </footer>
 
-    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
     <script type="text/javascript">
 
       const marked = require('marked');
@@ -100,8 +99,6 @@
         REQUEST_TO_DELETE_A_RECORD } = require('../constants');
 
       const { ipcRenderer } = electron;
-
-      AOS.init();
 
       const navigateToHome = () => {
         window.location.href = `file://${__dirname}/home.html`;

@@ -12,6 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
     <link href="../css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
   </head>
@@ -47,17 +48,17 @@
 
     <!-- Begin page content -->
     <main role="main" class="container-fluid container-wrapper">
-      <h1 class="main-text--heading main-text--heading--margin-top-40px" id="mainHeading"><button id="backToHome" onclick="navigateToHome()" title="Back to Home"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>Edit <strong>Record</strong></h1>
-      <p class="lead main-text--paragraph">Jot down your notes, ideas, memories here.</p>
-      <hr>
+      <h1 class="main-text--heading main-text--heading--margin-top-40px animated fadeIn" id="mainHeading"><button id="backToHome" onclick="navigateToHome()" title="Back to Home"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>Edit <strong>Record</strong></h1>
+      <p class="lead main-text--paragraph animated fadeIn">Jot down your notes, ideas, memories here.</p>
+      <hr class="animated flash">
     </main>
 
-    <div id="saveAlert" class="container-fluid container-wrapper display-none">
+    <div id="saveAlert" class="container-fluid container-wrapper display-none animated pulse">
       <div class="alert alert-success" id="saveAlertText" role="alert">
       </div>
     </div>
 
-    <div class="container-fluid container-wrapper">
+    <div class="container-fluid container-wrapper animated fadeIn" id="formContainer">
       <form class="form" id="saveRecordForm">
         <div class="form-label-group">
           <input type="text" id="inputTitle" class="form-control" placeholder="Title" required autofocus>
@@ -85,11 +86,11 @@
           </div>
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" onclick="updateNoteToDB(event)" id="updateNote" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+        <button class="btn btn-lg btn-primary btn-block animated pulse" onclick="updateNoteToDB(event)" id="updateNote" type="submit"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
       </form>
     </div>
 
-    <footer class="footer">
+    <footer class="footer animated fadeIn">
       <div class="container-fluid container-wrapper">
         <span class="text-muted">&copy; Developed and Designed by Pranav Jain</span>
       </div>
