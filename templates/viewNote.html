@@ -61,7 +61,7 @@
       <p id="recordContent--date"></p>
 
       <button class="btn btn-lg btn-primary btn-block" onclick="editNote()" id="editNote" type="submit">Edit</button>
-      <button class="btn btn-lg btn-primary btn-block" onclick="openDeleteModal()" id="deleteNote">Delete</button>
+      <button class="btn btn-lg btn-danger btn-block" onclick="openDeleteModal()" id="deleteNote">Delete</button>
     </div>
 
     <div id="deleteModal" class="custom-modal">
@@ -72,6 +72,10 @@
           <p class="alert alert-danger" id="deleteModalAlert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This is a potentially destructive action <i class="fa fa-exclamation-triangle" aria-hidden="true"></i><br><br> Please be sure before going ahead.</p>
         </div>
         <hr>
+        <div class="custom-modal--options">
+          <button class="btn btn-lg btn-primary">No</button>
+          <button class="btn btn-lg btn-default">Yes</button>
+        </div>
       </div>
     </div>
 

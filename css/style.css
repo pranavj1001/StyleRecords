@@ -131,6 +131,10 @@ body {
   display: block;
 }
 
+.custom-modal--options {
+  float: right;
+}
+
 /* IDs Styles */
 #addANote {
   position: fixed;
