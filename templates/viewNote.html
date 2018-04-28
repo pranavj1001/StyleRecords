@@ -48,7 +48,7 @@
 
     <!-- Begin page content -->
     <main role="main" class="container-fluid container-wrapper">
-      <h1 class="main-text--heading main-text--heading--margin-top-40px"><button id="backToHome" onclick="navigateToHome()" title="Back to Home"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>Your <strong>Record</strong></h1>
+      <h1 class="main-text--heading main-text--heading--margin-top-40px" data-aos="fade-down"><button id="backToHome" onclick="navigateToHome()" title="Back to Home"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>Your <strong>Record</strong></h1>
       <hr>
     </main>
 
@@ -73,8 +73,8 @@
         </div>
         <hr>
         <div class="custom-modal--options">
-          <button class="btn btn-lg btn-primary">No</button>
-          <button class="btn btn-lg btn-default">Yes</button>
+          <button class="btn btn-lg btn-primary" id="dontDeleteRecord" onclick="hideModal()">No</button>
+          <button class="btn btn-lg btn-default" id="deleteRecord" onclick="deleteRecord()">Yes</button>
         </div>
       </div>
     </div>
@@ -100,6 +100,8 @@
 
       const { ipcRenderer } = electron;
 
+      AOS.init();
+
       const navigateToHome = () => {
         window.location.href = `file://${__dirname}/home.html`;
       };
@@ -111,6 +113,14 @@
 
       const openDeleteModal = () => {
         document.getElementById('deleteModal').className += ' showModal';
+      };
+
+      const hideModal = () => {
+        document.getElementById('deleteModal').classList.remove('showModal');
+      };
+
+      const deleteRecord = () => {
+        console.log('Delete');
       };
 
       ipcRenderer.send(REQUEST_TO_FETCH_A_RECORD);
