@@ -1,6 +1,7 @@
 // messages which are used in alert boxes
 module.exports.RECORD_SAVED_CONFIRMATION_MESSAGE = 'Your record has been saved!';
 module.exports.RECORD_EDITED_CONFIRMATION_MESSAGE = 'Your record has been edited!';
+module.exports.NO_SEARCH_RESULTS_FOUND = 'No results found!';
 
 // requests sent by mainWindow to mainProcess
 module.exports.REQUEST_TO_SAVE_RECORD = 'record: save';
