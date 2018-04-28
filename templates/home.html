@@ -29,6 +29,11 @@
       <input type="text" placeholder="&#xF002; Search" onkeyup="getSearchInputText(event, value)" style="font-family:Arial, FontAwesome" id="searchBar" class="form-control">
     </div>
 
+    <div id="deleteAlert" class="container-fluid container-wrapper display-none">
+      <div class="alert alert-success" id="deleteAlertText" role="alert">
+      </div>
+    </div>
+
     <div class="container-fluid container-wrapper list-group" id="list">
       <p>Click Add Button to start writing a note.</p>
     </div>
@@ -51,7 +56,10 @@
         REQUEST_TO_FETCH_ALL_RECORDS,
         REQUEST_TO_SAVE_ID_TEMP,
         RECORDS_FETCH_CONFIRMATION,
-        NO_SEARCH_RESULTS_FOUND } = require('../constants');
+        NO_SEARCH_RESULTS_FOUND,
+        RECORD_DELETE_CONFIRMATION,
+        RECORD_DELETED_CONFIRMATION_MESSAGE,
+        REQUEST_TO_CHECK_FOR_SUCCESSFUL_DELETION } = require('../constants');
 
       let searchRecords = [];
 
@@ -129,6 +137,13 @@
           resetText = listContents;
         }
       };
+
+      // ipcRenderer.send(REQUEST_TO_CHECK_FOR_SUCCESSFUL_DELETION);
+      //
+      // ipcRenderer.on(RECORD_DELETE_CONFIRMATION, (event, confirmation) => {
+      //   document.getElementById('deleteAlert').style.display = 'block';
+      //   document.getElementById('deleteAlertText').innerHTML = confirmation;
+      // });
 
       ipcRenderer.send(REQUEST_TO_FETCH_ALL_RECORDS);
 

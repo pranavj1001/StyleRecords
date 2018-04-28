@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Record = require('./database/models/record');
 const {
   RECORD_SAVED_CONFIRMATION_MESSAGE,
+  RECORD_DELETED_CONFIRMATION_MESSAGE,
   REQUEST_TO_SAVE_RECORD,
   REQUEST_TO_SAVE_ID_TEMP,
   REQUEST_TO_FETCH_A_RECORD,
@@ -11,11 +12,13 @@ const {
   REQUEST_TO_CHECK_FOR_EDIT_REQUEST,
   REQUEST_TO_UPDATE_RECORD,
   REQUEST_TO_DELETE_A_RECORD,
+  REQUEST_TO_CHECK_FOR_SUCCESSFUL_DELETION,
   RECORD_SAVED_CONFIRMATION,
   RECORD_FETCH_CONFIRMATION,
   RECORDS_FETCH_CONFIRMATION,
   RECORD_EDIT_PENDING_REQUEST,
   RECORD_UPDATE_CONFIRMATION,
+  RECORD_DELETE_CONFIRMATION,
   RECORD_EDITED_CONFIRMATION_MESSAGE } = require('./constants');
 
 const { app, BrowserWindow, ipcMain } = electron;
@@ -117,9 +120,16 @@ ipcMain.on(REQUEST_TO_UPDATE_RECORD, (event, recordData) => {
 
 ipcMain.on(REQUEST_TO_DELETE_A_RECORD, () => {
   Record.findByIdAndRemove(currentOpenRecord)
-    .then((fetchedRecord) => {
-      console.log(fetchedRecord);
+    .then(() => {
+      deletedRecord = true;
     });
+});
+
+ipcMain.on(REQUEST_TO_CHECK_FOR_SUCCESSFUL_DELETION, () => {
+  if (deletedRecord) {
+    deletedRecord = false;
+    mainWindow.webContents.send(RECORD_DELETE_CONFIRMATION, RECORD_DELETED_CONFIRMATION_MESSAGE);
+  }
 });
 
 app.on('ready', () => {
