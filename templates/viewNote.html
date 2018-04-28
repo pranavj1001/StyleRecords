@@ -96,7 +96,8 @@
       const {
         REQUEST_TO_FETCH_A_RECORD,
         RECORD_FETCH_CONFIRMATION,
-        REQUEST_TO_EDIT_A_RECORD } = require('../constants');
+        REQUEST_TO_EDIT_A_RECORD,
+        REQUEST_TO_DELETE_A_RECORD } = require('../constants');
 
       const { ipcRenderer } = electron;
 
@@ -120,7 +121,8 @@
       };
 
       const deleteRecord = () => {
-        console.log('Delete');
+        ipcRenderer.send(REQUEST_TO_DELETE_A_RECORD);
+        window.location.href = `file://${__dirname}/home.html`;
       };
 
       ipcRenderer.send(REQUEST_TO_FETCH_A_RECORD);

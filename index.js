@@ -10,6 +10,7 @@ const {
   REQUEST_TO_FETCH_ALL_RECORDS,
   REQUEST_TO_CHECK_FOR_EDIT_REQUEST,
   REQUEST_TO_UPDATE_RECORD,
+  REQUEST_TO_DELETE_A_RECORD,
   RECORD_SAVED_CONFIRMATION,
   RECORD_FETCH_CONFIRMATION,
   RECORDS_FETCH_CONFIRMATION,
@@ -22,6 +23,7 @@ const { app, BrowserWindow, ipcMain } = electron;
 let mainWindow;
 let currentOpenRecord;
 let editRequest;
+let deletedRecord;
 
 mongoose.connect('mongodb://localhost/style_records');
 mongoose.Promise = global.Promise;
@@ -110,6 +112,13 @@ ipcMain.on(REQUEST_TO_UPDATE_RECORD, (event, recordData) => {
   Record.findByIdAndUpdate(currentOpenRecord, updatedRecord)
     .then(() => {
       mainWindow.webContents.send(RECORD_UPDATE_CONFIRMATION, RECORD_EDITED_CONFIRMATION_MESSAGE);
+    });
+});
+
+ipcMain.on(REQUEST_TO_DELETE_A_RECORD, () => {
+  Record.findByIdAndRemove(currentOpenRecord)
+    .then((fetchedRecord) => {
+      console.log(fetchedRecord);
     });
 });
 
