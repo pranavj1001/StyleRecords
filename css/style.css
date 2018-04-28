@@ -160,6 +160,10 @@ body {
   margin-bottom: 25px;
 }
 
+#searchBar {
+  margin-bottom: 20px;
+}
+
 
 /* Media Queries */
 @media (max-width: 768px) {
