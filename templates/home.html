@@ -52,6 +52,8 @@
         REQUEST_TO_SAVE_ID_TEMP,
         RECORDS_FETCH_CONFIRMATION } = require('../constants');
 
+      let searchRecords = [];
+
       const navigateToNewNote = () => {
         window.location.href = `file://${__dirname}/newNote.html`;
       };
@@ -67,6 +69,8 @@
         let listContents = '';
         TimeAgo.locale(en);
         const timeAgo = new TimeAgo('en-US');
+        let searchRecordId = 1;
+        const incrementer = 2;
         for(let i = records.length-1; i >= 0; i--) {
           const keywords = records[i].keywords.split(" ");
           const currentRecordDate = timeAgo.format(Date.parse(records[i].date));
@@ -87,8 +91,16 @@
           listContents += `</p>
           <small>By ${records[i].author}</small>
           </a>`;
+          let searchRecord = {};
+          searchRecord.id = searchRecordId;
+          searchRecord.title = records[i].title;
+          searchRecord.tags = keywords;
+          searchRecordId = searchRecordId + incrementer;
+          searchRecords.push(searchRecord);
         }
         document.getElementById('list').innerHTML = listContents;
+        console.log(searchRecords);
+        console.log(document.getElementById('list').childNodes);
       });
 
     </script>
