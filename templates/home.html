@@ -54,7 +54,6 @@
         NO_SEARCH_RESULTS_FOUND } = require('../constants');
 
       let searchRecords = [];
-      let resetText = '<p>Click Add Button to start writing a note.</p>';
 
       const navigateToNewNote = () => {
         window.location.href = `file://${__dirname}/newNote.html`;
@@ -69,14 +68,22 @@
         let results = [];
         if(searchRecords.length !== 0) {
           for(let i = 0; i < searchRecords.length; i++) {
-            const currentTitle = searchRecords[i].title.toLowerCase();
-            if(value.toLowerCase() === currentTitle.substr(0, value.length)) {
-              results.push(searchRecords[i]);
+            if(value.charAt(0) === '#') {
+              console.log('TAGS');
+            } else if (value.charAt(0) === '@') {
+              console.log('Author');
+            } else {
+              const currentTitle = searchRecords[i].title.toLowerCase();
+              if(value.toLowerCase() === currentTitle.substr(0, value.length)) {
+                results.push(searchRecords[i]);
+              }
             }
           }
-          showList(results);
-        } else {
-          document.getElementById('list').innerHTML = NO_SEARCH_RESULTS_FOUND;
+          if (results.length !== 0) {
+            showList(results);
+          } else {
+            document.getElementById('list').innerHTML = NO_SEARCH_RESULTS_FOUND;
+          }
         }
       };
 
