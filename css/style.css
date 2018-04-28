@@ -128,8 +128,16 @@ body {
   outline: none;
 }
 
-#saveNote, #editNote {
+#saveNote, #editNote, #deleteNote {
   max-width: 200px;
+}
+
+#editNote, #deleteNote {
+  display: inline-block;
+}
+
+#deleteNote {
+  margin-top: 0;
 }
 
 #showPreview {
@@ -170,6 +178,12 @@ body {
   #showPreviewContainer {
     margin-top: 20px;
     min-height: 252px;
+  }
+}
+
+@media (max-width: 450px) {
+  #deleteNote {
+    margin-top: 10px;
   }
 }
 
