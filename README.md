@@ -21,6 +21,12 @@ This repository can also be used as a reference for using electron with mongodb.
   <img src="styleRecordsSearchEngine3_23fps.gif">
 </p>
 
+### Save a Note
+
+<p align="center">
+  <img src="styleRecordsSaveNote23fps.gif">
+</p>
+
 ## Features
 
 * Add, View, Edit and Delete Notes
