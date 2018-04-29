@@ -30,7 +30,7 @@
       <input type="text" placeholder="&#xF002; Search" onkeyup="getSearchInputText(event, value)" style="font-family:Arial, FontAwesome" id="searchBar" class="form-control">
     </div>
 
-    <div class="container-fluid container-wrapper list-group" id="list">
+    <div class="container-fluid container-wrapper list-group animated fadeIn" id="list">
       <p>Click Add Button to start writing a note.</p>
     </div>
 
@@ -115,7 +115,7 @@
             addedOrUpdated = 'Updated';
           }
           listContents += `
-          <a href="#" onclick="navigateToViewNote(this)" record-id="${records[i].id.toString()}" class="list-group-item list-group-item-action flex-column align-items-start animated fadeIn">
+          <a href="#" onclick="navigateToViewNote(this)" record-id="${records[i].id.toString()}" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">${records[i].title}</h5>
           <small>${addedOrUpdated} ${currentRecordDate}</small>
