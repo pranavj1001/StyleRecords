@@ -33,6 +33,11 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
+app.on('ready', () => {
+  mainWindow = new BrowserWindow({ width: 1200, height: 800 });
+  mainWindow.loadURL(`file://${__dirname}/templates/home.html`);
+});
+
 ipcMain.on(REQUEST_TO_SAVE_RECORD, (event, recordData) => {
   const newRecord = new Record({
     title: recordData.title,
@@ -130,9 +135,4 @@ ipcMain.on(REQUEST_TO_CHECK_FOR_SUCCESSFUL_DELETION, () => {
     deletedRecord = false;
     mainWindow.webContents.send(RECORD_DELETE_CONFIRMATION, RECORD_DELETED_CONFIRMATION_MESSAGE);
   }
-});
-
-app.on('ready', () => {
-  mainWindow = new BrowserWindow({ width: 1200, height: 800 });
-  mainWindow.loadURL(`file://${__dirname}/templates/home.html`);
 });
