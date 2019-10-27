@@ -21,7 +21,7 @@
     "javascript-time-ago": "1.0.30",
     "marked": "0.3.19",
     "mongodb": "3.0.7",
-    "mongoose": "5.0.15"
+    "mongoose": ">=5.7.5"
   },
   "devDependencies": {
     "eslint-config-rallycoding": "3.2.0"
