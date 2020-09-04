@@ -20,7 +20,7 @@
     "electron": ">=1.8.8",
     "javascript-time-ago": "1.0.30",
     "marked": "0.3.19",
-    "mongodb": "3.0.7",
+    "mongodb": "3.6.1",
     "mongoose": ">=5.7.5"
   },
   "devDependencies": {
